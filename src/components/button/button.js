@@ -72,7 +72,7 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  color: t.oneOf(['primary', 'secondary', 'success', 'danger', 'warn', 'dark', 'light', 'warn']),
+  color: t.oneOf(['primary', 'secondary', 'success', 'danger', 'warn', 'dark', 'light']),
   styleButton: t.oneOf([
     'flat',
     'border',
