@@ -1,0 +1,101 @@
+---
+name: Radio
+route: /radio
+---
+
+import { Playground, Props } from 'docz';
+import Radio from './index';
+
+import '../../docz/common.scss';
+
+# Radio
+
+## Props
+
+<Props of={Radio} />
+
+## Default
+
+Add the radio type input with the component <rs-radio />
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Radio>Default</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio disabled>Disabled</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio isChecked>Active</Radio>
+    </div>
+  </section>
+</Playground>
+
+## Color
+
+Use the color property to change the base color of the component and some of the child components, to better understand the handling of colors and themes you can see ithere
+Allowed values ​​are:
+- primary
+- success
+- warning
+- dark
+- RGB
+- HEX
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Radio color="primary" isChecked>primary</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio color="success" isChecked>success</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio color="danger" isChecked>Danger</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio color="warning" isChecked>Warning</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio color="dark" isChecked>Dark</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio color="#7d33ff" isChecked>HEX</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio color="rgb(59,222,200)" isChecked>RGB</Radio>
+    </div>
+  </section>
+</Playground>
+
+## label
+
+Add a label to the radio with the default slot, if you need the label to be before the radio you can use the label-before property
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Radio>label</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio labelBefore>labelBefore</Radio>
+    </div>
+  </section>
+</Playground>
+
+## loading
+
+Add a loading animation to the component, when the radio has this property active it is as if it were in disabled
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Radio loading>option 1</Radio>
+    </div>
+    <div class="d-section__item">
+      <Radio loading>option 2</Radio>
+    </div>
+  </section>
+</Playground>
+
