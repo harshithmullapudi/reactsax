@@ -1,0 +1,23 @@
+.docz
+
+node_modules
+
+# Error logs
+npm-error.log
+yarn-error.log
+
+# distribution
+/lib/
+/es/
+
+# Ignore misc files
+.DS_Store
+
+# visual studio code
+.vscode
+
+#umd builds
+public
+
+#JetBrains
+.idea/

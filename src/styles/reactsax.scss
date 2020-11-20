@@ -1,0 +1,20 @@
+@import 'colors';
+@import 'vars';
+@import 'dark';
+@import 'reset';
+
+// @import '../util/ripple/style'
+
+.vs-remove-transition {
+  * {
+    transition: all 0s !important;
+
+    &::after {
+      transition: all 0s !important;
+    }
+
+    &::before {
+      transition: all 0s !important;
+    }
+  }
+}

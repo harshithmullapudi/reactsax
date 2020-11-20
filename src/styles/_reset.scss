@@ -1,0 +1,26 @@
+button {
+  outline: none;
+  cursor: pointer;
+}
+
+[disabled] {
+  opacity: 0.6;
+}
+
+input {
+  outline: none;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+[class*='rs-'] {
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+}

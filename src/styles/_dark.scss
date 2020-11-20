@@ -1,0 +1,74 @@
+[rs-theme='dark'] {
+  --rs-background: 30, 32, 35;
+  --rs-text: 255, 255, 255;
+  --rs-gray-1: 24, 25, 28;
+  --rs-gray-2: 20, 20, 23;
+  --rs-gray-3: 15, 16, 19;
+  --rs-gray-4: 10, 11, 14;
+  --rs-shadow-opacity: 0.3;
+  --rs-dark: 0, 0, 0;
+  --rs-background-opacity: 0.6;
+
+  .rs-pagination-content.rs-component-dark {
+    .rs-pagination__active {
+      --rs-color: 255, 255, 255;
+
+      color: -color('gray-3');
+    }
+  }
+
+  .rs-button.rs-component-dark.rs-button--transparent {
+    color: -color('text') !important;
+
+    &:hover {
+      &::before {
+        background: -color('color', 0.2);
+      }
+    }
+  }
+
+  .rs-button.rs-component-dark.rs-button--transparent.rs-button--active {
+    &::before {
+      background: -color('color', -var('background-opacity'));
+    }
+  }
+
+  .rs-ripple {
+    --rs-color: 0, 0, 0;
+  }
+
+  .rs-ripple-invert {
+    --rs-color: 0, 0, 0;
+  }
+
+  .rs-ripple-content {
+    --rs-color: 0, 0, 0;
+  }
+
+  .rs-loading {
+    --rs-background: 0, 0, 0;
+  }
+
+  .rs-input-parent--state-dark {
+    --rs-dark: 255, 255, 255 !important;
+
+    .rs-input {
+      background: #000 !important;
+    }
+  }
+
+  .rs-component-dark {
+    --rs-color: 0, 0, 0 !important;
+
+    .rs-avatar {
+      color: #fff !important;
+    }
+  }
+
+  .rs-component-dark.rs-alert {
+    --rs-color: 0, 0, 0 !important;
+
+    background: -color('color', 1) !important;
+    color: -color('text', 1) !important;
+  }
+}
