@@ -1,0 +1,112 @@
+---
+name: Input
+route: /input
+---
+
+import { Playground, Props } from 'docz';
+import Input from './index';
+import IconPlus from '../../icons/plus';
+
+import '../../docz/common.scss';
+
+# Input
+
+## Props
+
+<Props of={Input} />
+
+## Default
+
+Add an elements input facilitate with the component `<rs-input>`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Input placeholder="Name" />
+    </div>
+  </section>
+</Playground>
+
+## Label
+
+Add a label to the input with the property `label`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item margin-top">
+      <Input placeholder="Name" label="Full Name" />
+    </div>
+  </section>
+</Playground>
+
+## Label Placeholder
+
+You can have a placeholder with a great animation when being or in focus or with a value becoming a label above the input with the property `label-placeholder`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item margin-top">
+      <Input labelPlaceholder="Full Name" name="name" />
+    </div>
+  </section>
+</Playground>
+
+## Color
+
+You can have a placeholder with a great animation when being or in focus or with a value becoming a label above the input with the property `label-placeholder`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item margin-top">
+      <Input color="primary" placeholder="Primary" />
+    </div>
+    <div class="d-section__item margin-top">
+      <Input color="success" placeholder="Primary" Icon={IconPlus} />
+    </div>
+    <div class="d-section__item margin-top">
+      <Input color="warn" placeholder="Warn" />
+    </div>
+  </section>
+</Playground>
+
+## Message
+
+You can add a message below the input with the slot="message- {vuesax color}" to report that a field is missing or the value is wrong
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item margin-top">
+      <Input color="success" />
+    </div>
+    <div class="d-section__item margin-top">
+      <Input color="danger" message="Required" Icon={IconPlus} />
+    </div>
+  </section>
+</Playground>
+
+## State
+
+Change the color of the input for some state, the allowed states are (primary, success, danger, warn, dark)
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item margin-top">
+      <Input state="primary" placeholder="Name" />
+    </div>
+    <div class="d-section__item margin-top">
+      <Input state="success" placeholder="Email" />
+    </div>
+  </section>
+</Playground>
+
+## Loading
+
+Add a loading animation to the input with the loading property, the property is a Boolean, so you can add it without any value.
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item margin-top">
+      <Input color="primary" loading />
+    </div>
+  </section>
+</Playground>
