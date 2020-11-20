@@ -1,0 +1,42 @@
+.rs-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .rs-button {
+    margin: 0;
+
+    &:not(:last-of-type) {
+      &:not(:first-of-type) {
+        border: 0;
+        border-radius: 0;
+      }
+
+      &:not(:first-of-type).rs-button--border {
+        &::before {
+          width: 100%;
+          border-left: 0;
+        }
+
+        + {
+          .rs-button--border {
+            &:not(:last-of-type) {
+              &::before {
+                width: calc(100%);
+                border-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:last-of-type {
+      border-radius: 0 12px 12px 0;
+    }
+
+    &:first-of-type {
+      border-radius: 12px 0 0 12px;
+    }
+  }
+}

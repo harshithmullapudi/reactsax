@@ -21,6 +21,7 @@ function Button(props) {
     upload,
     block,
     styleButton,
+    ...restProps
   } = props;
 
   const isPrimary = color === 'primary';
@@ -62,6 +63,7 @@ function Button(props) {
           [`rs-button--${styleButton}`]: !isDefault,
         },
       )}
+      {...restProps}
     >
       <div className="rs-button__content">{children}</div>
       {loading && <div className="rs-button__loading" />}
@@ -70,7 +72,7 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  color: t.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'dark', 'light', 'warn']),
+  color: t.oneOf(['primary', 'secondary', 'success', 'danger', 'warn', 'dark', 'light', 'warn']),
   styleButton: t.oneOf([
     'flat',
     'border',
@@ -81,6 +83,7 @@ Button.propTypes = {
     'relief',
     'floating',
   ]),
+  size: t.oneOf(['xl', 'large', 'default', 'small', 'mini']),
   active: t.bool,
   upload: t.bool,
   href: t.string,

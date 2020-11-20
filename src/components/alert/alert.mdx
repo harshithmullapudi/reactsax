@@ -1,0 +1,185 @@
+---
+name: Alert
+route: /alert
+---
+
+import { Playground, Props } from 'docz';
+import Alert from './alert';
+
+import '../../docz/common.scss';
+
+# Alert
+
+## Props
+
+<Props of={Alert} />
+
+## Default
+
+Easily generate an alert with this component apart from functionalities such as hiding it and showing it color change and title icons among other things
+
+<Playground>
+  <section class="d-section">
+    <Alert Title="Reactsax Framework">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+</Playground>
+
+## Solid
+
+You can change the style of the component by adding the solid property, the property is aboolean so you can add it without any value.
+
+<Playground>
+  <section class="d-section">
+    <Alert Title="Reactsax Framework" type="solid">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+</Playground>
+
+## Border
+
+You can change the style of the component by adding the border property, the property is aboolean so you can add it without any value.
+
+<Playground>
+  <section class="d-section">
+    <Alert Title="Reactsax Framework" type="border">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+</Playground>
+
+## Shadow
+
+You can change the style of the component by adding the shadow property, the property is aboolean so you can add it without any value.
+
+<Playground>
+  <section class="d-section">
+    <Alert Title="Reactsax Framework" type="shadow">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+</Playground>
+
+## Gradient
+
+You can change the style of the component by adding the gradient property, the property is aboolean so you can add it without any value.
+
+<Playground>
+  <section class="d-section">
+    <Alert Title="Reactsax Framework" type="gradient">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+</Playground>
+
+## Relief
+
+You can change the style of the component by adding the relief property, the property is aboolean so you can add it without any value.
+
+<Playground>
+  <section class="d-section">
+    <Alert Title="Reactsax Framework" type="relief">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+</Playground>
+
+## Colors
+
+Change the color of the entire alert with the color property
+
+In this example you can click on the buttons and dynamically change the color value to display it in the component vs-alert
+
+<Playground>
+  <section class="d-section margin-bottom">
+    <Alert Title="Reactsax Framework" color="primary">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+  <section class="d-section margin-bottom">
+    <Alert Title="Reactsax Framework" color="success">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+  <section class="d-section margin-bottom">
+    <Alert Title="Reactsax Framework" color="danger">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+  <section class="d-section margin-bottom">
+    <Alert Title="Reactsax Framework" color="warn">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+  <section class="d-section margin-bottom">
+    <Alert Title="Reactsax Framework" color="#7d33ff">
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+</Playground>
+
+## Pagination
+
+There are times when we need to show a lot of content to the user but we don't want to extend the text and make the alert very large and tall
+
+<Playground>
+  <section class="d-section">
+    <Alert
+      Title="Reactsax Framework"
+      Pages={[
+        'Pagina 3 - esta es la ultima pagina de el ejemplo',
+        'Pagina 2 - En esta otra pagina puedes poner también lo que necesites y es dinámico osea que puedes agregar cuantas paginas necesites',
+      ]}
+    />
+  </section>
+</Playground>
+
+## Hidden Content
+
+You can hide the content of an alert and just leave the title to display the content dynamically
+
+<Playground>
+  <section class="d-section">
+    <Alert Title="Reactsax Framework" hiddenContent>
+      Reactsax is a UI components framework created with Reactjs to make projects easily and with a
+      Unique and pleasant style, React is created from scratch and designed for all types of
+      developed from the frontend lover to the backend that wants to easily create your visual
+      approach to the end user
+    </Alert>
+  </section>
+</Playground>
