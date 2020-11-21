@@ -1,0 +1,89 @@
+.rs-card__group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  .rs-card__group-cards {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+
+    .rs-card-content {
+      margin-left: 20px;
+      min-width: 350px;
+    }
+  }
+
+  .rs-card__group-prev {
+    position: relative;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+
+    .rs-icon-arrow {
+      display: block;
+      width: 15px;
+      height: 15px;
+      transform: rotate(-45deg);
+
+      &::before {
+        width: 2px;
+      }
+
+      &::after {
+        height: 2px;
+      }
+    }
+  }
+
+  .rs-card__group-next {
+    position: relative;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+
+    .rs-icon-arrow {
+      display: block;
+      width: 15px;
+      height: 15px;
+      transform: rotate(135deg);
+
+      &::before {
+        width: 2px;
+      }
+
+      &::after {
+        height: 2px;
+      }
+    }
+  }
+}
+
+.rs-card__group-space {
+  position: relative;
+  min-width: 20px;
+  height: 20px;
+}
