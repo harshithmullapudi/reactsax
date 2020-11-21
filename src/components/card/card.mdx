@@ -1,0 +1,82 @@
+---
+name: Card
+route: /card
+---
+
+import { Playground, Props } from 'docz';
+import Card from './index';
+
+import '../../docz/common.scss';
+
+# Card
+
+## Props
+
+<Props of={Card} />
+
+## Default
+
+Add a card with the rs-card component for the structure of this component we have several slots
+- title
+- text
+- buttons
+- interactions
+- img
+
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Card title={<h3>Lorem ipsum</h3>} text={<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>} image={<img src="https://vuesax.com/foto6.png" />}>Default</Card>
+    </div>
+  </section>
+</Playground>
+
+
+## Type 2
+
+Completely change the style of the letter with the property `type` and the value `2`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Card type="2" title={<h3>Lorem ipsum</h3>} text={<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>} image={<img src="https://vuesax.com/foto6.png" />}>Default</Card>
+    </div>
+  </section>
+</Playground>
+
+## Type 3
+
+Completely change the style of the letter with the property `type` and the value `3`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Card type="3" title={<h3>Lorem ipsum</h3>} text={<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>} image={<img src="https://vuesax.com/foto6.png" />}>Default</Card>
+    </div>
+  </section>
+</Playground>
+
+## Type 4
+
+Completely change the style of the letter with the property `type` and the value `4`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Card type="4" title={<h3>Lorem ipsum</h3>} text={<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>} image={<img src="https://vuesax.com/foto6.png" />}>Default</Card>
+    </div>
+  </section>
+</Playground>
+
+## Type 5
+
+Completely change the style of the letter with the property `type` and the value `5`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Card type="5" title={<h3>Lorem ipsum</h3>} text={<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>} image={<img src="https://vuesax.com/foto6.png" />}>Default</Card>
+    </div>
+  </section>
+</Playground>
