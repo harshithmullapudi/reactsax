@@ -1,0 +1,110 @@
+@import 'root';
+@import '../../styles/mixins';
+
+.isMultipleSelected .rs-table__tr .rs-table__td {
+  border-radius: 0 !important;
+}
+
+.rs-table__tr {
+  padding: 5px;
+  border: 0;
+}
+
+.rs-table__tr.expand {
+  cursor: pointer;
+}
+
+.rs-table__tr.rs-change-color .rs-table__td {
+  background: -color('color', 0.1) !important;
+  color: -color('color', 1) !important;
+}
+
+.rs-table__tr.rs-change-color .rs-table__td:hover {
+  background: -color('color', 0.2) !important;
+}
+
+.rs-table__tr:first-of-type .rs-table__td:last-child {
+  border-radius: 0 0 15px 0;
+}
+
+.rs-table__tr:first-of-type .rs-table__td:first-child {
+  border-radius: 0 0 0 15px;
+}
+
+.rs-table__tr.isExpand:first-of-type .rs-table__td {
+  border-radius: 0;
+  background: -color('gray-1') !important;
+}
+
+.rs-table__tr.isExpand:not(:first-of-type) .rs-table__td {
+  background: -color('gray-1') !important;
+}
+
+.rs-table__tr.isExpand:not(:first-of-type) .rs-table__td:last-child {
+  border-radius: 0 15px 0 0;
+}
+
+.rs-table__tr.isExpand:not(:first-of-type) .rs-table__td:first-child {
+  border-radius: 15px 0 0 0;
+}
+
+.rs-table__tr.isExpand:not(:first-of-type) + .rs-table__tr__expand td {
+  border-radius: 0 0 15px 15px !important;
+}
+
+.rs-table__tr.selected .rs-table__td {
+  background: -color('color', 0.1) !important;
+  color: -color('color', 1) !important;
+}
+
+.rs-table__tr .rs-table__td {
+  background: -color('bg', 0.1);
+  color: -color('bg', 1);
+}
+
+.rs-table__tr.rs-change-color:hover .rs-table__td {
+  background: -color('color', 0.2) !important;
+}
+
+.rs-table__tr:hover .rs-table__td {
+  background: -color('gray-1');
+}
+
+.rs-table__tr__expand {
+  border: 0;
+  transition: all 0.25s ease;
+}
+
+.rs-table__tr__expand td {
+  padding: 0;
+  border: 0;
+  background: -color('gray-1') !important;
+  transition: all 0.25s ease;
+}
+
+.rs-table__tr__expand td .rs-table__expand__td__content {
+  display: block;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.rs-table__tr__expand td .rs-table__expand__td__content__sub {
+  position: relative;
+  z-index: 1;
+  padding: 10px 15px;
+}
+
+.fade-expand-enter-active,
+.fade-expand-leave-active {
+  transition: all 0.25s ease;
+}
+
+.fade-expand-enter,
+.fade-expand-leave-to {
+  opacity: 0;
+}
+
+.fade-expand-enter td .rs-table__expand__td__content,
+.fade-expand-leave-to td .rs-table__expand__td__content {
+  height: 0 !important;
+}
