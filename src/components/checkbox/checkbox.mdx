@@ -1,0 +1,84 @@
+---
+name: Checkbox
+route: /checkbox
+---
+
+import { Playground, Props } from 'docz';
+import Checkbox from './checkbox';
+
+import '../../docz/common.scss';
+
+# Checkbox
+
+## Props
+
+<Props of={Checkbox} />
+
+## Default
+
+Add a checkbox type input easily and with a beautiful animation
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Checkbox>Option</Checkbox>
+    </div>
+  </section>
+</Playground>
+
+## Color
+
+Change the color of the component with the color property, the allowed values ​​are (main colors of vuesax, RGB, HEX)
+
+<Playground>
+  <section class="d-section margin-bottom">
+    <div class="d-section__item">
+      <Checkbox color="primary" checked>
+        Option
+      </Checkbox>
+    </div>
+  </section>
+  <section class="d-section margin-bottom">
+    <div class="d-section__item">
+      <Checkbox color="success" checked>
+        Option
+      </Checkbox>
+    </div>
+  </section>
+  <section class="d-section margin-bottom">
+    <div class="d-section__item">
+      <Checkbox color="danger" checked>
+        Option
+      </Checkbox>
+    </div>
+  </section>
+</Playground>
+
+## Loading
+
+Add a loading status to the component with the property `loading`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Checkbox loading>Option</Checkbox>
+    </div>
+  </section>
+    <section class="d-section">
+    <div class="d-section__item">
+      <Checkbox loading checked>Option</Checkbox>
+    </div>
+  </section>
+</Playground>
+
+## Indeterminate
+
+There are some cases where you have several checkboxes and you need one that manages all the others for this you can do it with the indeterminate property that adds a different style to the checkbox
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Checkbox indeterminate>Option</Checkbox>
+    </div>
+  </section>
+</Playground>

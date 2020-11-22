@@ -1,0 +1,59 @@
+---
+name: Avatar
+route: /avatar
+---
+
+import { Playground, Props } from 'docz';
+import Avatar from './avatar';
+import AvatarGroup from './group/avatar_group';
+
+import '../../docz/common.scss';
+
+# Avatar
+
+## Props
+
+<Props of={Avatar} />
+
+## Default
+
+Add an avatar easily and with functionality with the component `<rs-avatar>`
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <Avatar text="Harshith" />
+    </div>
+    <div class="d-section__item">
+      <Avatar text="Harshith Mullapudi" />
+    </div>
+    <div class="d-section__item">
+      <Avatar color="primary" text="Harshith" />
+    </div>
+  </section>
+</Playground>
+
+## Group
+
+You can group several avatar with the parent component `rs-avatar-group`, this component has two interesting properties:
+
+float: causes the avatar components to be placed on each other and the grouping of one on top of the other is eliminated
+
+<Playground>
+  <section class="d-section">
+    <div class="d-section__item">
+      <AvatarGroup>
+        <Avatar text="Rohith" />
+        <Avatar text="Harshith" />
+        <Avatar text="Rupesh" />
+      </AvatarGroup>
+    </div>
+    <div class="d-section__item">
+      <AvatarGroup float>
+        <Avatar text="Rohith" />
+        <Avatar text="Harshith" />
+        <Avatar text="Rupesh" />
+      </AvatarGroup>
+    </div>
+  </section>
+</Playground>
