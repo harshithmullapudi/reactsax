@@ -1,5 +1,5 @@
 import React from 'react';
-import { createPortal } from "react-dom";
+import { createPortal } from 'react-dom';
 
 import classnames from 'classnames';
 
@@ -7,9 +7,9 @@ import IconClose from '../../icons/close';
 
 import './dialog.scss';
 
-function Dialog (props) {
+function Dialog(props) {
   const {
-    value,
+    visible,
     fullScreen,
     rebound,
     notPadding,
@@ -37,23 +37,22 @@ function Dialog (props) {
   //   window.addEventListener('keydown', esc);
   // };
 
-
   const getLoading = () => {
     return (
-      <div className='rs-dialog__loading'>
-        <div className='rs-dialog__loading__load'></div>
+      <div className="rs-dialog__loading">
+        <div className="rs-dialog__loading__load"></div>
       </div>
     );
   };
 
   const getHeader = () => {
-    return <div className='rs-dialog__header'>{header}</div>;
+    return <div className="rs-dialog__header">{header}</div>;
   };
 
   const getClose = () => {
     return (
-      <button className='rs-alert__close' onClick={onClose}>
-        <IconClose hover='x' />
+      <button className="rs-dialog__close" onClick={onClose}>
+        <IconClose hover="x" />
       </button>
     );
   };
@@ -63,7 +62,7 @@ function Dialog (props) {
   };
 
   const getFooter = () => {
-    return <div className='rs-dialog__footer'>{footer}</div>;
+    return <div className="rs-dialog__footer">{footer}</div>;
   };
 
   const dialog = () => {
@@ -84,11 +83,11 @@ function Dialog (props) {
           { [`rs-dialog--notCenter`]: notCenter },
         )}
       >
-        {loading && getLoading}
-        {!notClose && getClose}
-        {header && getHeader}
-        {getContent}
-        {footer && getFooter}
+        {loading && getLoading()}
+        {!notClose && getClose()}
+        {header && getHeader()}
+        {getContent()}
+        {footer && getFooter()}
       </div>
     );
   };
@@ -96,21 +95,19 @@ function Dialog (props) {
   const getDialogContent = () => {
     return (
       <div
-        className={classnames('rs-dialog', { [`fullScreen`]: fullScreen }, { [`blur`]: blur })}
-        ref='dialog-content'
+        className={classnames(
+          'rs-dialog-content',
+          { [`fullScreen`]: fullScreen },
+          { [`blur`]: blur },
+        )}
         onClick={onClose}
       >
-        {dialog}
+        {dialog()}
       </div>
     );
   };
 
-  return (
-    <div>
-      { createPortal(<div className='rs-dialog'>{value && getDialogContent()}</div>, document.body) }
-    </div>
-  );
-
+  return <>{createPortal(visible && getDialogContent(), document.body)}</>;
 }
 
 export default Dialog;
