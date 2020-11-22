@@ -39,7 +39,7 @@ const setVar = (propertyName, value, el) => {
   if (!el) {
     document.documentElement.style.setProperty(`--vs-${propertyName}`, value);
   } else {
-    if (el.nodeName !== '#comment') {
+    if (el.nodeName !=== '#comment') {
       el.style.setProperty(`--vs-${propertyName}`, value);
     }
   }
@@ -125,20 +125,20 @@ const setCordsPosition = (element, parent, position) => {
 
   if (
     x + w + 10 + element.getBoundingClientRect().width > window.innerWidth &&
-    position == 'right'
+    position === 'right'
   ) {
     position = 'left';
     element.classList.remove('right');
     element.classList.add('left');
   }
 
-  if (x - 10 < element.getBoundingClientRect().width && position == 'left') {
+  if (x - 10 < element.getBoundingClientRect().width && position === 'left') {
     position = 'top';
     element.classList.remove('left');
     element.classList.add('top');
   }
 
-  if (rootTop - elTop < 30 || position == 'top') {
+  if (rootTop - elTop < 30 || position === 'top') {
     // console.log('hola mundo')
     style.top = `${y + scrollTop - element.clientHeight - 8}px`;
     const left = x + (w - element.getBoundingClientRect().width) / 2;
@@ -155,7 +155,7 @@ const setCordsPosition = (element, parent, position) => {
       style.right = '10px';
       element.classList.add('notArrow');
     }
-  } else if (position == 'bottom') {
+  } else if (position === 'bottom') {
     style.top = `${y + scrollTop + h + 8}px`;
     const left = x + (w - element.getBoundingClientRect().width) / 2;
 
@@ -171,10 +171,10 @@ const setCordsPosition = (element, parent, position) => {
       style.right = '10px';
       element.classList.add('notArrow');
     }
-  } else if (position == 'left') {
+  } else if (position === 'left') {
     style.top = `${y + scrollTop + (h - element.getBoundingClientRect().height) / 2}px`;
     style.left = `${x - element.getBoundingClientRect().width - 8}px`;
-  } else if (position == 'right') {
+  } else if (position === 'right') {
     style.top = `${y + scrollTop + (h - element.getBoundingClientRect().height) / 2}px`;
     style.left = `${x + w + 8}px`;
   }

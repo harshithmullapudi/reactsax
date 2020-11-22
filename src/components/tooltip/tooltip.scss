@@ -1,0 +1,321 @@
+@import 'root';
+@import '../../styles/mixins';
+
+@keyframes loadingTooltip {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rs-tooltip-enter-active {
+  transition: all 0.25s ease;
+}
+
+.rs-tooltip-leave-active {
+  transition: all 0.25s ease;
+}
+
+.rs-tooltip-enter {
+  opacity: 0;
+}
+
+.rs-tooltip-leave-to {
+  opacity: 0;
+}
+
+.rs-tooltip-enter.top {
+  transform: translate(0, 5px);
+}
+
+.rs-tooltip-leave-to.top {
+  transform: translate(0, 5px);
+}
+
+.rs-tooltip-enter.bottom {
+  transform: translate(0, -5px);
+}
+
+.rs-tooltip-leave-to.bottom {
+  transform: translate(0, -5px);
+}
+
+.rs-tooltip-enter.left {
+  transform: translate(5px);
+}
+
+.rs-tooltip-leave-to.left {
+  transform: translate(5px);
+}
+
+.rs-tooltip-enter.right {
+  transform: translate(-5px);
+}
+
+.rs-tooltip-leave-to.right {
+  transform: translate(-5px);
+}
+
+.rs-tooltip {
+  position: absolute;
+  z-index: 1000000;
+  padding: 5px 10px;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 350px;
+  border-radius: 12px;
+  background: -color('color');
+  color: -color('background');
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.darken {
+  .rs-tooltip {
+    --rs-color: var(--rs-gray-3);
+
+    color: #fff;
+
+    &:not(.rs-change-color) {
+      color: #fff !important;
+    }
+  }
+}
+
+.rs-tooltip.loading {
+  color: -color('background', 0.2);
+
+  * {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.rs-tooltip__loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  opacity: 1 !important;
+  transform: translate(-50%, -50%);
+
+  &::after {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 2px solid -color('background', 1);
+    border-top: 2px solid -color('background', 0);
+    border-bottom: 2px solid -color('background', 0);
+    border-left: 2px solid -color('background', 0);
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 -color('color', 1);
+    content: '';
+    transition: all 0.25s ease;
+    animation: loadingTooltip 0.6s ease infinite;
+  }
+
+  &::before {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed -color('background', 1);
+    border-top: 2px solid -color('background', 0);
+    border-bottom: 2px solid -color('background', 0);
+    border-left: 2px solid -color('background', 0);
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 -color('color', 1);
+    content: '';
+    transition: all 0.25s ease;
+    animation: loadingTooltip 0.6s linear infinite;
+  }
+}
+
+.rs-tooltip.borderThick {
+  background: -color('background');
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, -var(shadow-opacity));
+  color: -color('color');
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: inherit;
+    content: '';
+  }
+
+  &::after {
+    background: -color('color') !important;
+  }
+}
+
+.rs-tooltip.borderThick.top {
+  border-bottom: 4px solid -color('color');
+
+  &::after {
+    bottom: -7px;
+  }
+}
+
+.rs-tooltip.borderThick.left {
+  border-right: 4px solid -color('color');
+
+  &::after {
+    right: -7px;
+  }
+}
+
+.rs-tooltip.borderThick.right {
+  border-left: 4px solid -color('color');
+
+  &::after {
+    left: -7px;
+  }
+}
+
+.rs-tooltip.borderThick.bottom {
+  border-top: 4px solid -color('color');
+
+  &::after {
+    top: -7px;
+  }
+}
+
+.rs-tooltip.border {
+  border: 2px solid -color('color');
+  background: -color('background');
+  color: -color('color');
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: inherit;
+    content: '';
+  }
+
+  &::after {
+    width: 12px !important;
+    height: 12px !important;
+    border: 2px solid -color('color');
+  }
+}
+
+.rs-tooltip.circle {
+  border-radius: 20px;
+}
+
+.rs-tooltip.square {
+  border-radius: 0;
+}
+
+.rs-tooltip.notArrow {
+  &::after {
+    display: none;
+  }
+}
+
+.rs-tooltip.shadow {
+  background: -color('background');
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, -var(shadow-opacity));
+  color: -color('color');
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: inherit;
+    content: '';
+  }
+
+  &::after {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, -var(shadow-opacity));
+  }
+}
+
+.rs-tooltip.isDark {
+  --rs-color: var(--rs-gray-3);
+
+  color: #fff;
+}
+
+.rs-tooltip.top {
+  &::after {
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    z-index: -2;
+    width: 10px;
+    height: 10px;
+    border-radius: 0 0 2px 0;
+    background: inherit;
+    content: '';
+    transform: translate(-50%) rotate(45deg);
+  }
+}
+
+.rs-tooltip.bottom {
+  &::after {
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    z-index: -2;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px 0 0 0;
+    background: inherit;
+    content: '';
+    transform: translate(-50%) rotate(45deg);
+  }
+}
+
+.rs-tooltip.left {
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: -3px;
+    z-index: -2;
+    width: 10px;
+    height: 10px;
+    border-radius: 0 2px 0 0;
+    background: inherit;
+    content: '';
+    transform: translate(0, -50%) rotate(45deg);
+  }
+}
+
+.rs-tooltip.right {
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    z-index: -2;
+    width: 10px;
+    height: 10px;
+    border-radius: 0 0 0 2px;
+    background: inherit;
+    content: '';
+    transform: translate(0, -50%) rotate(45deg);
+  }
+}
