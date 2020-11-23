@@ -19,7 +19,7 @@ function Example(props) {
           }
           content={
             <p>
-              It generates a Dialog with the vs-dialog component, this component is very
+              It generates a Dialog with the rs-dialog component, this component is very
               customizable since it provides a slot to put and make any type of interface to the
               user's need
             </p>
