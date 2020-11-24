@@ -3,14 +3,35 @@ import classnames from 'classnames';
 
 import t from 'prop-types';
 
-import IconClose from '../../icons/close';
+import IconArrow from '../../icons/arrow';
 
 import getColor from '../../util/index';
 
 import './pagination.scss';
 
 function Pagination(props) {
-  const { children, length, color, arrowNext, max, arrowPrev, disabled, setValuePage, notArrows = false, onlyArrows, circle, square, buttonsDotted, disabledItems=[], loadingItems = [], notMargin, progress, dottedNumber, infinite, value } = props;
+  const { 
+    children,
+    length = 0, 
+    color, 
+    arrowNext, 
+    max = 9, 
+    arrowPrev, 
+    disabled, 
+    setValuePage, 
+    notArrows = false, 
+    onlyArrows, 
+    circle, 
+    square, 
+    buttonsDotted, 
+    disabledItems=[], 
+    loadingItems = [], 
+    notMargin, 
+    progress, 
+    dottedNumber, 
+    infinite, 
+    value 
+  } = props;
 
   const [ leftActive, setLeftActive ] = useState(42);
   const [ activeClassMove, setActiveClassMove ] = useState(false);
@@ -87,8 +108,8 @@ function Pagination(props) {
         >
           <span className="dotted" >...</span>
           <span className="con-arrows" >
-            <IconClose />
-            <IconClose />
+            <IconArrow />
+            <IconArrow />
           </span>
         </div>
       )
@@ -109,44 +130,37 @@ function Pagination(props) {
   }
 
   const renderButton = (NumberPage = 1) => {
-
-    const Button = (props) => {
-      const { NumberPage } = props;
-      return (
-        <button
-          className={classnames(
-            'rs-pagination__button',
-            { active: NumberPage === value },
-            { prevActive: NumberPage === value - 1 },
-            { nextActive: NumberPage === value + 1 },
-            { disabled: isDisabledItem(NumberPage) },
-            { loading: isLoadingItem(NumberPage) }
-          )}
-          ref ={`btn${NumberPage}`}
-          onClick={
-            (evt) => {
-              setValuePage(NumberPage)
-            }
+    return (
+      <button
+        className={classnames(
+          'rs-pagination__button',
+          { active: NumberPage === value },
+          { prevActive: NumberPage === value - 1 },
+          { nextActive: NumberPage === value + 1 },
+          { disabled: isDisabledItem(NumberPage) },
+          { loading: isLoadingItem(NumberPage) }
+        )}
+        // ref ={`btn${NumberPage}`}
+        onClick={
+          (evt) => {
+            setValuePage(NumberPage)
           }
-        >
-          { buttonsDotted ? '' : `${NumberPage}`}
-        </button>
-      )
-    }
-
-    return <Button NumberPage={NumberPage} />
+        }
+      >
+        { buttonsDotted ? '' : `${NumberPage}`}
+      </button>
+    )
   }
 
   const renderButtons = (array) => {
     const buttons = []
-    array.map((item, index) => {
+    array.forEach(item => {
       if (item === '...>' || item === '<...') {
         buttons.push(renderDotted(item))
       } else {
         buttons.push(renderButton(item))
       }
-      return true;
-    })
+    });
 
     return buttons;
   }
@@ -177,17 +191,10 @@ function Pagination(props) {
 
       return renderButtons([1, '<...', ...getButtons(start, end), '...>', length])
     } else if (!buttonsDotted && length > 6) {
-      return renderButtons([
-        ...getButtons(1, prevRange),
-        '...>',
-        ...getButtons(nextRange, length)
-      ])
+      return renderButtons([ ...getButtons(1, prevRange), '...>', ...getButtons(nextRange, length)])
     } else if (buttonsDotted || length <= 6) {
-      return renderButtons([
-        ...getButtons(1, length === 0 ? 1 : length),
-      ])
+      return renderButtons([...getButtons(1, length === 0 ? 1 : length)])
     }
-
     return []
   }
 
@@ -219,7 +226,7 @@ function Pagination(props) {
     )
   }
 
-  const pagination = ({ length, max }) => {
+  const getPagination = () => {
     return (
       <div
         className="rs-pagination"
@@ -244,7 +251,7 @@ function Pagination(props) {
           }
         }}
       >
-        { arrowPrev ? arrowPrev : <IconClose />}
+        { arrowPrev ? arrowPrev : <IconArrow />}
       </button>
     )
   }
@@ -264,7 +271,7 @@ function Pagination(props) {
           }
         }}
       >
-        { arrowNext ? arrowNext : <IconClose />}
+        { arrowNext ? arrowNext : <IconArrow />}
       </button>
     )
   }
@@ -310,7 +317,7 @@ function Pagination(props) {
       { (!onlyArrows && !children) && active()}
       { !notArrows && prev()}
       {  children && slot()}
-      { (onlyArrows && !children) && pagination({ length, max })}
+      { (!onlyArrows && !children) && getPagination()}
       { !notArrows && next()}
       { progress && progressBar()}
     </div>
@@ -340,6 +347,9 @@ Pagination.propTypes = {
 
 Pagination.useDefaultProps = {
   color: 'primary',
+  length: 0,
+  max: 9,
+  dottedNumber: 5
 };
 
 export default Pagination;
