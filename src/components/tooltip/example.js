@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Tooltip from './index';
 import Button from '../button/button';
 
-function Example(props) {
+function Example() {
   return (
     <>
       <Tooltip tooltip="This is a beautiful button">
-        <Button>Hover me</Button>
+        <Button styleButton="flat">Hover me</Button>
       </Tooltip>
     </>
   );

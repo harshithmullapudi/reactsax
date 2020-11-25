@@ -151,14 +151,15 @@ function Tooltip(props) {
 
     return (
       <div
-        ref={tooltipRef}
         style={{
           '--rs-color': color ? getColor(color) : '',
         }}
+        ref={tooltipRef}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         className={classnames(
-          'rs-tooltip',
+          { 'rs-tooltip': activeTooltip },
+          { 'rs-tooltip-inactive': !activeTooltip },
           { top: !bottom && !left && !right },
           { bottom: bottom },
           { left: left },
@@ -174,10 +175,8 @@ function Tooltip(props) {
           { [`rs-component--${color}`]: color },
         )}
       >
-        <div>
-          {tooltip}
-          {loading && getLoading()}
-        </div>
+        {tooltip}
+        {loading && getLoading()}
       </div>
     );
   };
@@ -200,14 +199,13 @@ function Tooltip(props) {
               }
             }, 250);
           } else {
-            // console.log('here');
             removeTooltip();
           }
         }
       }}
     >
       {children}
-      <div>{activeTooltip && getTooltip()}</div>
+      {getTooltip()}
     </div>
   );
 }

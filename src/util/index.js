@@ -181,7 +181,6 @@ const setCordsPosition = (element, parent, position) => {
 };
 
 const insertBody = (element, parent) => {
-  console.log(element);
   const target = parent ? parent : document.body;
   target.insertBefore(element, target.lastChild);
 };

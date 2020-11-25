@@ -36,9 +36,7 @@ function Pagination(props) {
     infinite,
     value,
   } = props;
-
-  console.log(props);
-
+  
   const [leftActive, setLeftActive] = useState(42);
   const [activeClassMove, setActiveClassMove] = useState(false);
   const [val, setVal] = useState(0);

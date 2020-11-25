@@ -59,6 +59,10 @@
   transform: translate(-5px);
 }
 
+.rs-tooltip-inactive {
+  display: none !important;
+}
+
 .rs-tooltip {
   position: absolute;
   z-index: 1000000;
@@ -71,6 +75,10 @@
   color: -color('background');
   text-align: center;
   font-size: 0.85rem;
+}
+
+.rs-tooltip.active {
+  display: none !important;
 }
 
 .darken {
