@@ -45,7 +45,6 @@ function Pagination(props) {
   // })
 
   useEffect(() => {
-    console.log('length changed', length);
     const offsetLeftPagination = (paginationRef).offsetLeft
     // setLeftActive((this.$refs[`btn${value}`]).offsetLeft + offsetLeftPagination)
     setTimeout(() => {
