@@ -35,6 +35,16 @@ const isColor = (color) => {
   return vsColors.includes(color);
 };
 
+const setVar = (propertyName, value, el) => {
+  if (!el) {
+    document.documentElement.style.setProperty(`--vs-${propertyName}`, value);
+  } else {
+    if (el.nodeName !== '#comment') {
+      el.style.setProperty(`--vs-${propertyName}`, value);
+    }
+  }
+};
+
 const getColor = (color) => {
   function hexToRgb(hex) {
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -74,5 +84,102 @@ const getColor = (color) => {
   }
   return newColor;
 };
+
+const setCords = (element, parent) => {
+  const cords = parent.getBoundingClientRect();
+  const x = cords.x;
+  const y = cords.y;
+  const w = cords.width;
+  const h = cords.height;
+  const style = element.style;
+  const scrollTop = window.pageYOffset;
+  const elTop = element.clientHeight + cords.y + scrollTop;
+  const rootTop = scrollTop + window.innerHeight;
+
+  if (rootTop - elTop < 30) {
+    // console.log('hola mundo')
+    style.top = `${y + scrollTop - element.clientHeight - 4}px`;
+    style.left = `${x}px`;
+    style.width = `${w}px`;
+    element.classList.add('top');
+    parent.classList.add('top');
+  } else {
+    style.top = `${y + scrollTop + h - 4}px`;
+    style.left = `${x}px`;
+    style.width = `${w}px`;
+    element.classList.remove('top');
+    parent.classList.remove('top');
+  }
+};
+
+const setCordsPosition = (element, parent, position) => {
+  const cords = parent.getBoundingClientRect();
+  const x = cords.x;
+  const y = cords.y;
+  const w = cords.width;
+  const h = cords.height;
+  const style = element.style;
+  const scrollTop = window.pageYOffset;
+  const elTop = element.clientHeight + cords.y + scrollTop;
+  const rootTop = scrollTop + window.innerHeight;
+
+  if (
+    x + w + 10 + element.getBoundingClientRect().width > window.innerWidth &&
+    position == 'right'
+  ) {
+    position = 'left';
+    element.classList.remove('right');
+    element.classList.add('left');
+  }
+
+  if (x - 10 < element.getBoundingClientRect().width && position == 'left') {
+    position = 'top';
+    element.classList.remove('left');
+    element.classList.add('top');
+  }
+
+  if (rootTop - elTop < 30 || position == 'top') {
+    // console.log('hola mundo')
+    style.top = `${y + scrollTop - element.clientHeight - 8}px`;
+    const left = x + (w - element.getBoundingClientRect().width) / 2;
+
+    if (left + element.getBoundingClientRect().width < window.innerWidth) {
+      if (left > 0) {
+        style.left = `${left}px`;
+      } else {
+        style.left = '10px';
+        element.classList.add('notArrow');
+      }
+    } else {
+      style.left = 'auto';
+      style.right = '10px';
+      element.classList.add('notArrow');
+    }
+  } else if (position == 'bottom') {
+    style.top = `${y + scrollTop + h + 8}px`;
+    const left = x + (w - element.getBoundingClientRect().width) / 2;
+
+    if (left + element.getBoundingClientRect().width < window.innerWidth) {
+      if (left > 0) {
+        style.left = `${left}px`;
+      } else {
+        style.left = '10px';
+        element.classList.add('notArrow');
+      }
+    } else {
+      style.left = 'auto';
+      style.right = '10px';
+      element.classList.add('notArrow');
+    }
+  } else if (position == 'left') {
+    style.top = `${y + scrollTop + (h - element.getBoundingClientRect().height) / 2}px`;
+    style.left = `${x - element.getBoundingClientRect().width - 8}px`;
+  } else if (position == 'right') {
+    style.top = `${y + scrollTop + (h - element.getBoundingClientRect().height) / 2}px`;
+    style.left = `${x + w + 8}px`;
+  }
+};
+
+export { setCords, setCordsPosition, setVar };
 
 export default getColor;
