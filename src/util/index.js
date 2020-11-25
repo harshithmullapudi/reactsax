@@ -37,10 +37,10 @@ const isColor = (color) => {
 
 const setVar = (propertyName, value, el) => {
   if (!el) {
-    document.documentElement.style.setProperty(`--vs-${propertyName}`, value);
+    document.documentElement.style.setProperty(`--rs-${propertyName}`, value);
   } else {
-    if (el.nodeName !=== '#comment') {
-      el.style.setProperty(`--vs-${propertyName}`, value);
+    if (el.nodeName !== '#comment') {
+      el.style.setProperty(`--rs-${propertyName}`, value);
     }
   }
 };
@@ -180,6 +180,17 @@ const setCordsPosition = (element, parent, position) => {
   }
 };
 
-export { setCords, setCordsPosition, setVar };
+const insertBody = (element, parent) => {
+  console.log(element);
+  const target = parent ? parent : document.body;
+  target.insertBefore(element, target.lastChild);
+};
+
+const removeBody = (element, parent) => {
+  const target = parent ? parent : document.body;
+  target.removeChild(element);
+};
+
+export { setCords, setCordsPosition, setVar, insertBody, removeBody };
 
 export default getColor;

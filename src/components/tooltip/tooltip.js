@@ -1,18 +1,22 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
-
 import t from 'prop-types';
 
-import getColor, { insertBody, setCordsPosition } from '../../util/index'
+import getColor, { insertBody, setCordsPosition } from '../../util/index';
+import { getHTMLElement } from '../../util/dom_utils';
+
 import './tooltip.scss';
 
 function Tooltip(props) {
   const {
-    value,
+    visible,
     color,
+
+    // position
     bottom,
     left,
     right,
+
     shadow,
     notArrow,
     square,
@@ -23,161 +27,168 @@ function Tooltip(props) {
     loading,
     tooltip,
     notHover,
-    interactivity
+    interactivity,
+    children,
   } = props;
 
-  var activeTooltip = false;
-  var isHoverTooltip = false;
+  const [activeTooltip, setActiveTooltip] = useState(false);
+  const [isHoverTooltip, setIsHoverTooltip] = useState(false);
+
   const tooltipRef = useRef(null);
-  const tooltipcontentRef = useRef(null);
+  const tooltipContentRef = useRef(null);
 
-
-  useEffect(() => {
-    activeTooltip = value;
-    if (value) {
-      this.insertTooltip()
-    }
-  }, [value])
-
-  useEffect(() => {
-    window.addEventListener('popstate', (event) => {
-      const tooltips = document.querySelectorAll('.rs-tooltip')
-      tooltips.forEach((tooltip) => {
-        tooltip.remove()
-      })
-    })
-
-    window.addEventListener('resize', handleResize)
-
-    if (notHover) {
-      window.addEventListener('mousedown', handleMouseDownNotHover)
-    }
-
-    window.addEventListener('touchstart', handleMouseDownNotHover)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('mousedown', handleMouseDownNotHover)
-    };
-
-  });
+  // console.log(tooltipRef);
 
   const getLoading = () => {
-    return <div className="rs-tooltip__loading" />
-  }
+    return <div className="rs-tooltip__loading" />;
+  };
 
   const handlerMouseEnter = () => {
     if (delay) {
       setTimeout(() => {
-        activeTooltip = true
-        insertTooltip()
-      }, Number(delay))
+        setActiveTooltip(true);
+      }, Number(delay));
     } else {
-      activeTooltip =
-        setTimeout(function () {
-          console.log("TIMEOUT 3");
-          insertTooltip()
-        }, 2000);
-
+      setActiveTooltip(true);
     }
-  }
+  };
 
   const insertTooltip = () => {
+    insertBody(getHTMLElement(tooltipRef), document.body);
 
-    insertBody(tooltipRef, document.body)
-
-    let position = 'top'
+    let position = 'top';
     if (bottom) {
-      position = 'bottom'
+      position = 'bottom';
     } else if (left) {
-      position = 'left'
+      position = 'left';
     } else if (right) {
-      position = 'right'
+      position = 'right';
     }
 
-    setCordsPosition(tooltipRef, tooltipcontentRef, position)
-  }
+    setCordsPosition(getHTMLElement(tooltipRef), getHTMLElement(tooltipContentRef), position);
+  };
 
   const removeTooltip = () => {
-    activeTooltip = false
+    // tooltipRef.current.remove();
+    setActiveTooltip(false);
     // this.$emit('input', false)
-  }
+  };
 
   const handleResize = () => {
-    let position = 'top'
+    let position = 'top';
     if (bottom) {
-      position = 'bottom'
+      position = 'bottom';
     } else if (left) {
-      position = 'left'
+      position = 'left';
     } else if (right) {
-      position = 'right'
+      position = 'right';
     }
-    if (!tooltip) { return }
-    setCordsPosition(tooltipRef, tooltipcontentRef, position)
+    if (!tooltip) {
+      return;
+    }
+    setCordsPosition(getHTMLElement(tooltipRef), getHTMLElement(tooltipContentRef), position);
 
     for (let index = 0; index < 300; index++) {
       setTimeout(() => {
-        setCordsPosition(tooltipRef, tooltipcontentRef, position)
+        setCordsPosition(getHTMLElement(tooltipRef), getHTMLElement(tooltipContentRef), position);
       }, index);
     }
-  }
+  };
 
   const handleMouseDownNotHover = (evt) => {
     if (!evt.target.closest('.rs-tooltip') && !evt.target.closest('.rs-tooltip-content')) {
-      removeTooltip()
+      removeTooltip();
     }
-  }
+  };
+
+  useEffect(() => {
+    if (activeTooltip) {
+      insertTooltip();
+    }
+  }, [activeTooltip]);
+
+  useEffect(() => {
+    setActiveTooltip(visible);
+    if (visible) {
+      insertTooltip();
+    }
+  }, [visible]);
+
+  useEffect(() => {
+    // window.addEventListener('popstate', (event) => {
+    //   const tooltips = document.querySelectorAll('.rs-tooltip');
+    //   tooltips.forEach((tooltip) => {
+    //     tooltip.remove();
+    //   });
+    // });
+
+    window.addEventListener('resize', handleResize);
+
+    if (notHover) {
+      window.addEventListener('mousedown', handleMouseDownNotHover);
+    }
+
+    window.addEventListener('touchstart', handleMouseDownNotHover);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousedown', handleMouseDownNotHover);
+    };
+  }, []);
 
   const getTooltip = () => {
-
     const onMouseEnter = () => {
       if (interactivity) {
-        isHoverTooltip = true
-        handlerMouseEnter()
+        setIsHoverTooltip(true);
+        handlerMouseEnter();
       }
-    }
+    };
 
     const onMouseLeave = () => {
-      isHoverTooltip = false
-      removeTooltip()
-    }
+      setIsHoverTooltip(false);
+      removeTooltip();
+    };
 
-    return <div
-      ref={tooltipRef}
-      // style={{
-      //   '--rs-color': color ? getColor(color) : '',
-      // }}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className={classnames(
-        'rs-tooltip',
-        { top: !bottom && !left && !right },
-        { bottom: bottom },
-        { left: left },
-        { right: right },
-        { shadow: shadow },
-        { notArrow: notArrow },
-        { square: square },
-        { circle: circle },
-        { border: border },
-        { borderThick: borderThick },
-        { loading: loading },
-        // colors
-        `rs-component--${color}`,
-      )}
-    >
-      {/* { tooltip } */}
-      {loading && getLoading()}
-    </div>
-  }
+    return (
+      <div
+        ref={tooltipRef}
+        style={{
+          '--rs-color': color ? getColor(color) : '',
+        }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        className={classnames(
+          'rs-tooltip',
+          { top: !bottom && !left && !right },
+          { bottom: bottom },
+          { left: left },
+          { right: right },
+          { shadow: shadow },
+          { notArrow: notArrow },
+          { square: square },
+          { circle: circle },
+          { border: border },
+          { borderThick: borderThick },
+          { loading: loading },
+          // colors
+          { [`rs-component--${color}`]: color },
+        )}
+      >
+        <div>
+          {tooltip}
+          {loading && getLoading()}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div
-      ref={tooltipcontentRef}
+      ref={tooltipContentRef}
       className="rs-tooltip-content"
       onMouseEnter={() => {
         if (!notHover) {
-          handlerMouseEnter()
+          handlerMouseEnter();
         }
       }}
       onMouseLeave={() => {
@@ -185,20 +196,18 @@ function Tooltip(props) {
           if (interactivity) {
             setTimeout(() => {
               if (!isHoverTooltip) {
-                removeTooltip()
+                removeTooltip();
               }
-            }, 250)
+            }, 250);
           } else {
-            removeTooltip()
+            // console.log('here');
+            removeTooltip();
           }
         }
       }}
     >
-      <div name="rs-tooltip">
-        hello
-        {getTooltip()}
-        {/* { activeTooltip && getTooltip() } */}
-      </div>
+      {children}
+      <div>{activeTooltip && getTooltip()}</div>
     </div>
   );
 }
@@ -218,7 +227,7 @@ Tooltip.propTypes = {
   loading: t.bool,
   tooltip: t.element,
   notHover: t.bool,
-  interactivity: t.bool
+  interactivity: t.bool,
 };
 
 export default Tooltip;
