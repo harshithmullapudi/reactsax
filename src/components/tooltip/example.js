@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 
 import Tooltip from './index';
-// import Button from '../button/index';
+import Button from '../button/button';
 
-function Example (props) {
+function Example(props) {
   return (
     <>
-      <Tooltip
-        loading={true}
-        right={true}
-      >
-        <button>Click me</button>
+      <Tooltip tooltip="This is a beautiful button">
+        <Button>Hover me</Button>
       </Tooltip>
     </>
   );

@@ -5,7 +5,7 @@ import t from 'prop-types';
 import IconClose from '../../icons/close';
 import IconPlus from '../../icons/plus';
 
-import getcolor from '../../util/index';
+import getColor from '../../util/index';
 
 import './alert.scss';
 
@@ -143,7 +143,7 @@ function Alert(props) {
         },
       )}
       style={{
-        '--rs-color': color ? getcolor(color) : '',
+        '--rs-color': color ? getColor(color) : '',
       }}
     >
       {Icon && <div className="rs-alert__icon">{Icon}</div>}
