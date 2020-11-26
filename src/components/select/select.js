@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import t from 'prop-types';
 
 import Option from './option/option';
+import OptionGroup from './option_group/option_group';
 import IconClose from '../../icons/close';
 import IconArrow from '../../icons/arrow';
 
@@ -17,7 +18,6 @@ const initialState = {
   targetSelect: false,
   activeFilter: false,
   textFilter: '',
-  valueLabel: null,
   hoverOption: -1,
   targetClose: false,
   renderSelect: false,
@@ -45,6 +45,7 @@ function Select(props) {
     renderNoData,
     data,
     message,
+    showGroups,
   } = props;
 
   const [innerState, setInnerState] = useState(initialState);
@@ -62,7 +63,6 @@ function Select(props) {
     targetSelectInput,
     activeFilter,
     textFilter,
-    valueLabel,
     hoverOption,
     targetClose,
   } = innerState;
@@ -386,6 +386,43 @@ function Select(props) {
   };
 
   const getOptionComponents = () => {
+    if (showGroups) {
+      const newData = data.sort((a, b) => a.group.toLowerCase() < b.group.toLowerCase());
+
+      let groups = newData.map((option) => option.group);
+
+      groups = groups.filter((item, pos) => {
+        return groups.indexOf(item) == pos;
+      });
+
+      return (
+        <>
+          {groups.map((group) => (
+            <OptionGroup title={group}>
+              {data.map((option, index) => {
+                if (option.group === group) {
+                  return (
+                    <Option
+                      key={option.value}
+                      option={option}
+                      isMultiple={multiple}
+                      parentValue={value}
+                      clickOption={clickOption}
+                      index={index}
+                      hoverIndex={hoverOption}
+                      textFilter={textFilter}
+                    />
+                  );
+                }
+
+                return <></>;
+              })}
+            </OptionGroup>
+          ))}
+        </>
+      );
+    }
+
     return (
       <>
         {data.map((option, index) => (

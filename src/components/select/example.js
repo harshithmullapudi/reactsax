@@ -3,7 +3,6 @@ import Select from './select';
 
 function SelectExample() {
   const [value, setValue] = useState(['Harshith']);
-  console.log(value);
 
   return (
     <Select
@@ -12,10 +11,12 @@ function SelectExample() {
       }}
       placeholder="Name"
       value={value}
+      color="success"
+      state="success"
       data={[
-        { label: 'Harshith', value: 'Harshith' },
-        { label: 'Rohith', value: 'Rohith' },
-        { label: 'Rupesh', value: 'Rupesh' },
+        { label: 'Harshith', value: 'Harshith', group: 'Text' },
+        { label: 'Rohith', value: 'Rohith', group: 'Text' },
+        { label: 'Rupesh', value: 'Rupesh', group: 'Text2' },
       ]}
       name="select1"
     />
