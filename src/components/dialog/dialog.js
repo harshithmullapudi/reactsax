@@ -5,6 +5,8 @@ import classnames from 'classnames';
 
 import IconClose from '../../icons/close';
 
+import { loadAfterMount } from '../../util/dom_utils';
+
 import './dialog.scss';
 
 function Dialog(props) {
@@ -110,4 +112,4 @@ function Dialog(props) {
   return <>{createPortal(visible && getDialogContent(), document.body)}</>;
 }
 
-export default Dialog;
+export default loadAfterMount(Dialog);

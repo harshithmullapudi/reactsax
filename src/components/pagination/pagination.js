@@ -7,7 +7,7 @@ import t from 'prop-types';
 import IconArrow from '../../icons/arrow';
 
 import getColor from '../../util/index';
-import { getHTMLElement } from '../../util/dom_utils';
+import { getHTMLElement, loadAfterMount } from '../../util/dom_utils';
 
 import './pagination.scss';
 
@@ -36,7 +36,7 @@ function Pagination(props) {
     infinite,
     value,
   } = props;
-  
+
   const [leftActive, setLeftActive] = useState(42);
   const [activeClassMove, setActiveClassMove] = useState(false);
   const [val, setVal] = useState(0);
@@ -332,7 +332,7 @@ Pagination.propTypes = {
 Pagination.defaultProps = {
   color: 'primary',
   max: 9,
-  dottedNumber: 5, 
+  dottedNumber: 5,
 };
 
-export default Pagination;
+export default loadAfterMount(Pagination);

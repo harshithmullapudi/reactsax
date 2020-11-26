@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import t from 'prop-types';
 
 import getColor, { insertBody, setCordsPosition } from '../../util/index';
-import { getHTMLElement } from '../../util/dom_utils';
+import { getHTMLElement, loadAfterMount } from '../../util/dom_utils';
 
 import './tooltip.scss';
 
@@ -228,4 +228,4 @@ Tooltip.propTypes = {
   interactivity: t.bool,
 };
 
-export default Tooltip;
+export default loadAfterMount(Tooltip);

@@ -8,7 +8,7 @@ import IconClose from '../../icons/close';
 import IconArrow from '../../icons/arrow';
 
 import getColor, { setCords, insertBody } from '../../util/index';
-import { getHTMLElement } from '../../util/dom_utils';
+import { getHTMLElement, loadAfterMount } from '../../util/dom_utils';
 
 import './select.scss';
 
@@ -706,4 +706,4 @@ Select.defaultProps = {
   onChange: () => {},
 };
 
-export default Select;
+export default loadAfterMount(Select);
