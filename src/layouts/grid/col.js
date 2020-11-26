@@ -14,6 +14,7 @@ function Col(props) {
     xs,
     type,
     justify,
+    background
   } = props;
 
   return (
@@ -21,7 +22,8 @@ function Col(props) {
       style={{
         justifyContent: justify,
         display: type,
-        order: order
+        order: order,
+        background: background
       }}
       className={classnames(
         'rs-col',
