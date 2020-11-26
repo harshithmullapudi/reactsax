@@ -1,0 +1,118 @@
+@import '../../../styles/mixins';
+
+.rs-sidebar__item {
+  position: relative;
+  display: flex;
+  padding: 14px 16px;
+  padding-top: 15px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: -color('text');
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+  opacity: 0.7;
+  transition: all 0.25s ease;
+  align-items: center;
+  justify-content: flex-start;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: -4px;
+    z-index: 60;
+    width: 10px;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+    background: -color('color');
+    content: '';
+    transition: all 0.25s ease;
+    transform: translate(-6px);
+  }
+
+  &:hover {
+    &:not(.hasIcon) {
+      padding-left: 25px;
+      opacity: 1;
+    }
+  }
+}
+
+.rs-sidebar__item.hasIcon {
+  padding: 0;
+
+  &:hover {
+    padding-left: 8px;
+    opacity: 1;
+  }
+}
+
+.rs-sidebar__item.hasIcon.active {
+  padding-left: 8px;
+}
+
+.rs-sidebar__item.active {
+  &:not(.hasIcon) {
+    padding-left: 25px;
+  }
+
+  color: -color('color');
+  opacity: 1;
+
+  &::after {
+    transform: translate(0);
+  }
+}
+
+.rs-sidebar__item__icon {
+  z-index: 50;
+  display: flex;
+  min-width: 50px;
+  height: 47px;
+  background: -color('background');
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.rs-sidebar__item__text {
+  z-index: 10;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.rs-sidebar__item__arrow {
+  position: relative;
+  z-index: 80;
+  margin-right: 15px;
+  margin-left: auto;
+  width: 7px;
+  height: 7px;
+  transition: all 0.25s ease;
+  transform: rotate(-135deg) !important;
+  justify-self: flex-end;
+
+  .rs-icon-arrow {
+    &::before {
+      width: 2px;
+    }
+
+    &::after {
+      height: 2px;
+    }
+  }
+}
+
+.rs-sidebar__item__text-tooltip {
+  position: fixed;
+  left: 50px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: all 0.25s ease;
+  pointer-events: none;
+}

@@ -1,5 +1,5 @@
 const isColor = (color) => {
-  const vsColors = [
+  const rsColors = [
     'primary',
     'secondary',
     'success',
@@ -32,7 +32,7 @@ const isColor = (color) => {
     'google-plus',
     'messenger',
   ];
-  return vsColors.includes(color);
+  return rsColors.includes(color);
 };
 
 const setVar = (propertyName, value, el) => {
@@ -44,6 +44,63 @@ const setVar = (propertyName, value, el) => {
     }
   }
 };
+
+const setColor = (colorName, color, el, addClass) => {
+  function hexToRgb(hex) {
+    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
+    hex = hex.replace(shorthandRegex, (m, r, g, b) => {
+      return r + r + g + g + b + b
+    })
+
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+    return result ? {
+      r: parseInt(result[1], 16),
+      // tslint:disable-next-line:object-literal-sort-keys
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null
+  }
+
+  const isRGB = /^(rgb|rgba)/.test(color)
+  const isRGBNumbers = /^(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d),(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d),(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d)$/.test(color)
+  const isHEX = /^(#)/.test(color)
+  let newColor
+
+  if (color == 'dark' && el) {
+    if (addClass) {
+      el.classList.add('rs-component-dark')
+    }
+  }
+
+  if (isRGB) {
+    const arrayColor = color.replace(/[rgba()]/g, '').split(',')
+    newColor = `${arrayColor[0]},${arrayColor[1]},${arrayColor[2]}`
+    setVar(colorName, newColor, el)
+    if (addClass) {
+      el.classList.add('rs-change-color')
+    }
+  } else if (isHEX) {
+    const rgb = hexToRgb(color)
+    newColor = `${rgb.r},${rgb.g},${rgb.b}`
+    setVar(colorName, newColor, el)
+    if (addClass) {
+      el.classList.add('rs-change-color')
+    }
+  } else if (isColor(color)) {
+    const style = window.getComputedStyle(document.body)
+    newColor = style.getPropertyValue('--rs-' + color)
+    setVar(colorName, newColor, el)
+    if (addClass) {
+      el.classList.add('rs-change-color')
+    }
+  } else if (isRGBNumbers) {
+    setVar(colorName, color, el)
+    if (addClass) {
+      el.classList.add('rs-change-color')
+    }
+  }
+}
+
 
 const getColor = (color) => {
   function hexToRgb(hex) {
@@ -190,6 +247,6 @@ const removeBody = (element, parent) => {
   target.removeChild(element);
 };
 
-export { setCords, setCordsPosition, setVar, insertBody, removeBody };
+export { setCords, setCordsPosition, setVar, insertBody, removeBody, setColor };
 
 export default getColor;
