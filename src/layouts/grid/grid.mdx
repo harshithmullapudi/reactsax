@@ -1,6 +1,7 @@
 ---
-name: grid
+name: Grid
 route: /grid
+menu: Layout
 ---
 
 import { Playground, Props } from 'docz';
@@ -8,7 +9,7 @@ import Row from './index';
 import Col from './col'
 import '../../docz/common.scss';
 
-# Card
+# Grid
 
 ## Props
 
@@ -32,34 +33,46 @@ With the `w` directive define the column width (Col) its value is **1-12**, an e
 <Playground>
   <section class="d-section">
     <div style={{width: '100%'}}>
-        <Row align="center" justify="space-between" direction="row">
-            <Col type="flex" justify="center" align="center" w="12">100%</Col>
-        </Row>
-         <Row>
-            {[0, 1].map(el=>(
-                <Col w="6" type="flex" justify="center" align="center">50%</Col>            
-            ))}
-        </Row>
-        <Row>
-            {[0, 1, 2].map(el=>(
-                <Col w="4" type="flex" justify="center" align="center">33.3%</Col>            
-            ))}
-        </Row>
-        <Row>
-            {[0, 1, 2, 3].map(el=>(
-                <Col w="3" type="flex" justify="center" align="center">25%</Col>            
-            ))}
-        </Row>
-        <Row>
-            {[0, 1, 2, 3, 4, 5].map(el=>(
-                <Col w="2" type="flex" justify="center" align="center">16.6%</Col>            
-            ))}
-        </Row>
-        <Row>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(el=>(
-                <Col w="1" type="flex" justify="center" align="center">8.3%</Col>            
-            ))}
-        </Row>
+        <div className="d-section__row">
+            <Row align="center" justify="space-between" direction="row">
+                <Col type="flex" justify="center" align="center" w="12">100%</Col>
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                {[0, 1].map(el=>(
+                    <Col w="6" type="flex" justify="center" align="center">50%</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                {[0, 1, 2].map(el=>(
+                    <Col w="4" type="flex" justify="center" align="center">33.3%</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                {[0, 1, 2, 3].map(el=>(
+                    <Col w="3" type="flex" justify="center" align="center">25%</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                {[0, 1, 2, 3, 4, 5].map(el=>(
+                    <Col w="2" type="flex" justify="center" align="center">16.6%</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(el=>(
+                    <Col w="1" type="flex" justify="center" align="center">8.3%</Col>            
+                ))}
+            </Row>
+        </div>
     </div>
   </section>
 </Playground>
@@ -72,21 +85,31 @@ To give a distance from the left we have the offset property that with the same 
 <Playground>
   <section class="d-section">
     <div style={{width: '100%'}}>
-        <Row w="12">
-            <Col offset="5" w="6">offset=6</Col>
-        </Row>
-        <Row>
-            <Col offset="0" w="2">offset=2</Col>
-        </Row>
-        <Row>
-            <Col offset="2" w="8">offset=8</Col>
-        </Row>
-        <Row>
-            <Col offset="9" w="3">offset = 7</Col>
-        </Row>
-        <Row>
-            <Col offset="4" w="4">offset=4</Col>
-        </Row>
+        <div className="d-section__row">
+            <Row w="12">
+                <Col offset="5" w="6">offset = 5</Col>
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                <Col offset="0" w="2">offset = 0</Col>
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                <Col offset="2" w="8">offset = 2</Col>
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                <Col offset="9" w="3">offset = 9</Col>
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row>
+                <Col offset="4" w="4">offset = 4</Col>
+            </Row>
+        </div>
     </div>
   </section>
 </Playground>
@@ -99,36 +122,41 @@ If we have to align the elements horizontally, use the `justify` directive that 
 <Playground>
   <section class="d-section">
     <div style={{width: '100%'}}>
-        <Row>
-            {[0, 1, 2].map(index=>(
-                <Col w="2">Default {{ index + 1 }}</Col>            
-            ))}
-        </Row>
-
-        <Row justify="center">
-          {[0, 1, 2].map(index=>(
-                <Col w="2">Center {{ index + 1 }}</Col>            
-            ))}
-        </Row>
-
-        <Row justify="flex-end">
-            {[0, 1, 2].map(index=>(
-                <Col w="2">Flex-end {{ index + 1 }}</Col>            
-            ))}
-        </Row>
-
-
-        <Row justify="space-around">
-            {[0, 1, 2].map(index=>(
-                <Col w="2">Space-around {{ index + 1 }}</Col>            
-            ))}
-        </Row>
-
-        <Row justify="space-between">
-            {[0, 1, 2].map(index=>(
-                <Col w="2">Space-between {{ index + 1 }}</Col>            
-            ))}
-        </Row>
+        <div className="d-section__row">
+            <Row>
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="4"> Default {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row justify="center">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="2">Center {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row justify="flex-end">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="2" >Flex-end {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row justify="space-around">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="2" >Space-around {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row justify="space-between">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="2">Space-between {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
     </div>
   </section>
 </Playground>
@@ -144,36 +172,41 @@ We also have the `direction` property that refers to the css` flex-direction` pr
 <Playground>
   <section class="d-section">
     <div style={{width: '100%'}}>
-        <Row justify="center">
-            {[0, 1, 2].map(index=>(
-                <Col w="2">Default {{ index + 1 }}</Col>            
-            ))}
-        </Row>
-
-        <Row align="center" justify="center">
-          {[0, 1, 2].map(index=>(
-                <Col w="2">Center {{ index + 1 }}</Col>            
-            ))}
-        </Row>
-
-        <Row align="flex-end" justify="center">
-          {[0, 1, 2].map(index=>(
-                <Col w="2">Flex-end {{ index + 1 }}</Col>            
-            ))}
-        </Row>
-
-
-        <Row class="mh" align="center" justify="space-around" direction="column">
-            {[0, 1, 2].map(index=>(
-                <Col w="2">Space-around {{ index + 1 }}</Col>            
-            ))}
-        </Row>
-
-        <Row class="mh" align="center" justify="space-between" direction="column">
-            {[0, 1, 2].map(index=>(
-                <Col w="2">Space-between {{ index + 1 }}</Col>            
-            ))}
-        </Row>
+        <div className="d-section__row">
+            <Row justify="center">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="4"> Default {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row align="center" justify="center">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="2">Center {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row align="flex-end" justify="center">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="2" >Flex-end {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row class="mh" align="center" justify="space-around" direction="column">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="2" >Space-around {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
+        <div className="d-section__row">
+            <Row class="mh" align="center" justify="space-between" direction="column">
+                {[0, 1, 2].map((el, index)=>(
+                    <Col w="2">Space-between {index + 1}</Col>            
+                ))}
+            </Row>
+        </div>
     </div>
   </section>
 </Playground>
@@ -201,6 +234,35 @@ In some cases, we want to order the elements to our liking. To do this, use the 
           <Col w="3">
             4
           </Col>
+        </Row>
+    </div>
+  </section>
+</Playground>
+
+
+
+## Responsive
+
+There are some measures that can only be added in a specific device size, the directives are:
+
+- **lg**: is for large devices such as desktops or laptops (large).
+- **sm**: is for medium-sized devices such as laptops or tablets.
+- **xs**: is for small devices such as tablets (small) and phones.
+
+
+<Playground>
+  <section class="d-section">
+    <div style={{width: '100%'}}>
+        <Row>
+            <Col w="2">
+                2
+            </Col>
+            <Col w="8">
+                8
+            </Col>
+            <Col w="2">
+               2
+            </Col>
         </Row>
     </div>
   </section>
