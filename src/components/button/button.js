@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import t from 'prop-types';
 
 import getColor from '../../util/index';
+import { loadAfterMount } from '../../util/dom_utils';
 
 import './button.scss';
 
@@ -98,4 +99,4 @@ Button.defaultProps = {
   color: 'primary',
 };
 
-export default Button;
+export default loadAfterMount(Button);

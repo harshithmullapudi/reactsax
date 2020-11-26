@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import t from 'prop-types';
 
 import getColor from '../../util/index';
+import { loadAfterMount } from '../../util/dom_utils';
 
 import './input.scss';
 
@@ -192,4 +193,4 @@ Input.propTypes = {
 
 Input.defaultProps = {};
 
-export default Input;
+export default loadAfterMount(Input);
