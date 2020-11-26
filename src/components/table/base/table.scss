@@ -1,0 +1,107 @@
+@import '../../../styles/mixins';
+
+.rs-table-content {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.rs-table {
+  overflow: auto;
+  margin: 0;
+  width: 100%;
+  font-size: 0.9rem;
+
+  table {
+    margin: 0;
+    min-width: 500px;
+    width: 100%;
+    border: 0;
+    border-collapse: collapse;
+  }
+}
+
+.rs-table.striped {
+  .rs-table__tr {
+    &:nth-child(2n) {
+      background: -color('gray-1') !important;
+    }
+  }
+}
+
+.rs-table_not-found {
+  display: none;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+
+  tr {
+    text-align: center;
+
+    td {
+      padding: 20px;
+      border: 0;
+    }
+  }
+}
+
+.rs-table__tbody {
+  &:empty {
+    display: none;
+    background: #000;
+
+    ~ {
+      .rs-table_not-found {
+        display: table-row-group;
+      }
+    }
+  }
+}
+
+.rs-table.isSelectedValue {
+  tr {
+    cursor: pointer;
+  }
+}
+
+.rs-table__footer {
+  padding: 8px 10px;
+  border-radius: 0 0 14px 14px;
+  background: -color('gray-2');
+}
+
+.rs-table__thead {
+  width: 100%;
+
+  .rs-table__th {
+    background: -color('gray-2');
+
+    &:first-child {
+      border-radius: 14px 0 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 14px 0 0;
+    }
+  }
+}
+
+.rs-table__header {
+  padding: 10px;
+  width: 100%;
+  border-radius: 14px 14px 0 0;
+  background: -color('gray-2');
+
+  ~ {
+    .rs-table {
+      .rs-table__th {
+        &:first-child {
+          border-radius: 0;
+        }
+
+        &:last-child {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}
