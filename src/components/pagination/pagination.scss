@@ -1,3 +1,6 @@
+@import 'root';
+@import '../../styles/mixins';
+
 @keyframes loadingPagination {
   0% {
     transform: rotate(0);

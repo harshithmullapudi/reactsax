@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Dialog from './index';
-import Button from '../button/index';
+import Button from '../button/button';
 
 function Example(props) {
   const [state, setState] = useState(false);
@@ -13,7 +13,7 @@ function Example(props) {
           blur
           visible
           header={
-            <h4 class="not-margin">
+            <h4 className="not-margin">
               Welcome to <b>Vuesax</b>
             </h4>
           }

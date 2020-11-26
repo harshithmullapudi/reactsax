@@ -4,39 +4,38 @@ import classnames from 'classnames';
 import t from 'prop-types';
 
 import getColor from '../../util/index';
+import { loadAfterMount } from '../../util/dom_utils';
 
 import './radio.scss';
 
-function Radio (props) {
+function Radio(props) {
   const { color, disabled, loading, value, labelBefore, name, children, Icon, isChecked } = props;
 
   const getLabel = () => {
     return (
-      <label className='rs-radio__label' for={name}>
+      <label className="rs-radio__label" htmlFor={name}>
         {children}
       </label>
     );
   };
 
   const radioInput = () => {
-    return <input type='radio' id={name} name={name} checked={isChecked} value={value}></input>;
+    return <input type="radio" id={name} name={name} checked={isChecked} value={value}></input>;
   };
 
   const radioEffect = () => {
     return (
-      <span className='rs-radio__effect'>
-        <span className='rs-radio__effect__icon'>
-          {Icon && <Icon />}
-        </span>
-        <span className='rs-radio__effect__loading'></span>
+      <span className="rs-radio__effect">
+        <span className="rs-radio__effect__icon">{Icon && <Icon />}</span>
+        <span className="rs-radio__effect__loading"></span>
       </span>
     );
   };
 
   const getRadio = () => {
     return (
-      <div className='rs-radio'>
-         {radioInput()}
+      <div className="rs-radio">
+        {radioInput()}
         {radioEffect()}
       </div>
     );
@@ -78,4 +77,4 @@ Radio.defaultProps = {
   color: 'primary',
 };
 
-export default Radio;
+export default loadAfterMount(Radio);

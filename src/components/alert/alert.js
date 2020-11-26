@@ -6,6 +6,7 @@ import IconClose from '../../icons/close';
 import IconPlus from '../../icons/plus';
 
 import getColor from '../../util/index';
+import { loadAfterMount } from '../../util/dom_utils';
 
 import './alert.scss';
 
@@ -176,4 +177,4 @@ Alert.defaultProps = {
   visible: false,
 };
 
-export default Alert;
+export default loadAfterMount(Alert);

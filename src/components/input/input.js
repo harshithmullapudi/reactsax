@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import t from 'prop-types';
 
 import getColor from '../../util/index';
+import { loadAfterMount } from '../../util/dom_utils';
 
 import './input.scss';
 
@@ -46,7 +47,7 @@ function Input(props) {
   const getLabel = () => {
     return (
       <label
-        for={name}
+        htmlFor={name}
         className={classnames(
           'rs-input__label',
           { 'rs-input__label--placeholder': labelPlaceholder },
@@ -62,7 +63,7 @@ function Input(props) {
   const getPlaceholder = () => {
     return (
       <label
-        for={name}
+        htmlFor={name}
         className={classnames('rs-input__label', { 'rs-input__label--hidden': value !== '' })}
       >
         {placeholder}
@@ -192,4 +193,4 @@ Input.propTypes = {
 
 Input.defaultProps = {};
 
-export default Input;
+export default loadAfterMount(Input);

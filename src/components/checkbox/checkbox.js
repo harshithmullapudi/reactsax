@@ -5,13 +5,13 @@ import t from 'prop-types';
 import IconCheck from '../../icons/check';
 
 import getColor from '../../util/index';
+import { loadAfterMount } from '../../util/dom_utils';
 
 import './checkbox.scss';
 
 function Checkbox(props) {
   const {
     checked,
-    value,
     disabled,
     loading,
     labelBefore,
@@ -56,7 +56,7 @@ function Checkbox(props) {
   const getLabel = () => {
     return (
       <label
-        for={id || name}
+        htmlFor={id || name}
         className={classnames('rs-checkbox-label', {
           lineThrough: lineThrough,
         })}
@@ -104,4 +104,4 @@ Checkbox.propTypes = {
   lineThrough: t.bool,
 };
 
-export default Checkbox;
+export default loadAfterMount(Checkbox);
