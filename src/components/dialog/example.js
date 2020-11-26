@@ -13,7 +13,7 @@ function Example(props) {
           blur
           visible
           header={
-            <h4 class="not-margin">
+            <h4 className="not-margin">
               Welcome to <b>Vuesax</b>
             </h4>
           }

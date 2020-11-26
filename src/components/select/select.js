@@ -390,6 +390,7 @@ function Select(props) {
       <>
         {data.map((option, index) => (
           <Option
+            key={option.value}
             option={option}
             isMultiple={multiple}
             parentValue={value}
@@ -503,7 +504,7 @@ function Select(props) {
     return (
       <label
         ref={placeholderRef}
-        for={name}
+        htmlFor={name}
         className={classnames('rs-select__label', {
           'rs-select__label--hidden': value || textFilter,
         })}
@@ -516,7 +517,7 @@ function Select(props) {
   const getLabel = () => {
     return (
       <label
-        for={name}
+        htmlFor={name}
         className={classnames(
           'rs-select__label',
           {
@@ -544,7 +545,7 @@ function Select(props) {
       <input
         ref={inputRef}
         id={!multiple && name}
-        readonly={!filter && true ? 'readonly' : false}
+        readOnly={!filter && true ? 'readonly' : false}
         className={classnames(
           'rs-select__input',
           {

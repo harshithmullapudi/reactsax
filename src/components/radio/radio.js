@@ -12,7 +12,7 @@ function Radio (props) {
 
   const getLabel = () => {
     return (
-      <label className='rs-radio__label' for={name}>
+      <label className='rs-radio__label' htmlFor={name}>
         {children}
       </label>
     );

@@ -19,14 +19,14 @@ import '../../docz/common.scss';
 The buttons are a fundamental part of any project, with vuesax you can add a great button with a single line of code the buttons have all the states as active, focus, hover, to make its implementation simpler and speed up the work
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button>Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button active>Active</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button disabled>Disabled</Button>
     </div>
   </section>
@@ -37,16 +37,16 @@ The buttons are a fundamental part of any project, with vuesax you can add a gre
 You can change the full style towards flat of a button with the flat property that its value is aboolean, so just adding it will change the styles
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button styleButton="flat" active>
         Active
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="flat">Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="flat" disabled>
         Disabled
       </Button>
@@ -59,16 +59,16 @@ You can change the full style towards flat of a button with the flat property th
 You can change the full style towards border of a button with the border property that its value is aboolean so just adding it will change the styles
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button styleButton="border" active>
         Active
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="border">Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="border" disabled>
         Disabled
       </Button>
@@ -81,16 +81,16 @@ You can change the full style towards border of a button with the border propert
 You can change the full style towards Gradient of a button with the gradient property that its value is aboolean, so just adding it will change the styles
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button styleButton="gradient" active>
         Active
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="gradient">Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="gradient" disabled>
         Disabled
       </Button>
@@ -103,16 +103,16 @@ You can change the full style towards Gradient of a button with the gradient pro
 Change the style of the button to a relief aspect with the relief property, the property is aboolean so you can add it without any value.
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button styleButton="relief" active>
         Active
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="relief">Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="relief" disabled>
         Disabled
       </Button>
@@ -125,16 +125,16 @@ Change the style of the button to a relief aspect with the relief property, the 
 Change the style of the button with the transparent property, the property is aboolean so you can add it without any value.
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button styleButton="transparent" active>
         Active
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="transparent">Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="transparent" disabled>
         Disabled
       </Button>
@@ -147,18 +147,18 @@ Change the style of the button with the transparent property, the property is ab
 Change the style of the button with the shadow property, the property is aboolean so you can add it without any value.
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button styleButton="shadow" color="dark" active>
         Active
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="shadow" color="dark">
         Default
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="shadow" color="dark" disabled>
         Disabled
       </Button>
@@ -171,34 +171,34 @@ Change the style of the button with the shadow property, the property is aboolea
 Change the color of the Button component with the color property and the color value for example (#fff, rgba (100,10,5) or the main colors of vuesax), this will only affect the component and its value can be dynamic
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button>Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="flat">Success</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="border" color="danger">
         Danger
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="gradient" color="warn">
         Danger
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="shadow" color="dark">
         Dark
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button color="#7d33ff" styleButton="relief">
         HEX
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button color="rgb(59,222,200)" styleButton="gradient">
         RGB
       </Button>
@@ -211,16 +211,16 @@ Change the color of the Button component with the color property and the color v
 You can make all the corners completely straight with the Square property, the property is aboolean so you can add it without any value.
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button square>Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="flat" square>
         Success
       </Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button styleButton="border" square color="danger">
         Danger
       </Button>
@@ -240,20 +240,20 @@ Change the size of the entire button including padding, font-size and border wit
   - mini
 
 <Playground>
-  <section class="d-section">
-    <div class="d-section__item">
+  <section className="d-section">
+    <div className="d-section__item">
       <Button size="xl">XLarge</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button size="large">Large</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button>Default</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button size="small">Small</Button>
     </div>
-    <div class="d-section__item">
+    <div className="d-section__item">
       <Button size="mini">Mini</Button>
     </div>
   </section>

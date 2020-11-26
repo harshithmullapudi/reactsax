@@ -56,7 +56,7 @@ function Checkbox(props) {
   const getLabel = () => {
     return (
       <label
-        for={id || name}
+        htmlFor={id || name}
         className={classnames('rs-checkbox-label', {
           lineThrough: lineThrough,
         })}

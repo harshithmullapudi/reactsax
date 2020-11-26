@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 
 import Checkbox from '../../checkbox/checkbox';
@@ -21,10 +21,17 @@ function Option(props) {
 
   const [hiddenState, setHiddenState] = useState(false);
   const [activeOption, setActiveOption] = useState(isActive());
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     setActiveOption(isActive());
   }, [parentValue]);
+
+  useEffect(() => {
+    buttonRef.current.addEventListener('mousedown', () => {
+      clickOption(value, label);
+    });
+  }, []);
 
   useEffect(() => {
     if (textFilter) {
@@ -49,6 +56,7 @@ function Option(props) {
 
   return (
     <button
+      ref={buttonRef}
       disabled={disabled}
       className={classnames(
         'rs-select__option',
@@ -65,10 +73,6 @@ function Option(props) {
           hiddenOption: hiddenState,
         },
       )}
-      onMouseUp={(evt) => {
-        console.log(evt);
-        // clickOption(value, label);
-      }}
     >
       {isMultiple && getCheckbox()}
       {!isMultiple && label}
